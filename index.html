@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SIP Calculator and Investment Plan Idea Maker - SEBI Compliant">
+    <title>SIP Calculator & Investment Plan Maker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SIP Calculator & Investment Plan Maker</h1>
+            <p class="subtitle">Plan your systematic investments with confidence</p>
+        </header>
+
+        <main>
+            <!-- SIP Calculator Section -->
+            <section class="card calculator-section">
+                <h2>SIP Calculator</h2>
+                <p class="section-description">Calculate your potential returns from systematic investment plans</p>
+                
+                <form id="sipForm" class="calculator-form">
+                    <div class="form-group">
+                        <label for="monthlyAmount">Monthly Investment Amount (₹)</label>
+                        <input 
+                            type="number" 
+                            id="monthlyAmount" 
+                            name="monthlyAmount" 
+                            min="500" 
+                            max="10000000" 
+                            step="500"
+                            placeholder="e.g., 5000"
+                            required
+                        >
+                        <span class="error-message" id="monthlyAmountError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="annualReturn">Expected Annual Return (%)</label>
+                        <input 
+                            type="number" 
+                            id="annualReturn" 
+                            name="annualReturn" 
+                            min="1" 
+                            max="30" 
+                            step="0.1"
+                            value="12"
+                            placeholder="e.g., 12"
+                            required
+                        >
+                        <span class="error-message" id="annualReturnError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="years">Investment Period (Years)</label>
+                        <input 
+                            type="number" 
+                            id="years" 
+                            name="years" 
+                            min="1" 
+                            max="40" 
+                            step="1"
+                            placeholder="e.g., 10"
+                            required
+                        >
+                        <span class="error-message" id="yearsError"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Calculate</button>
+                </form>
+
+                <div id="sipResults" class="results hidden">
+                    <h3>Investment Summary</h3>
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <span class="result-label">Total Investment</span>
+                            <span class="result-value" id="totalInvestment">₹0</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Estimated Returns</span>
+                            <span class="result-value" id="estimatedReturns">₹0</span>
+                        </div>
+                        <div class="result-item highlight">
+                            <span class="result-label">Total Value</span>
+                            <span class="result-value" id="totalValue">₹0</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Investment Plan Idea Maker Section -->
+            <section class="card plan-maker-section">
+                <h2>Investment Plan Idea Maker</h2>
+                <p class="section-description">Get personalized investment ideas based on your profile</p>
+                
+                <form id="planForm" class="plan-form">
+                    <div class="form-group">
+                        <label for="age">Your Age</label>
+                        <input 
+                            type="number" 
+                            id="age" 
+                            name="age" 
+                            min="18" 
+                            max="100" 
+                            placeholder="e.g., 30"
+                            required
+                        >
+                        <span class="error-message" id="ageError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="monthlyIncome">Monthly Income (₹)</label>
+                        <input 
+                            type="number" 
+                            id="monthlyIncome" 
+                            name="monthlyIncome" 
+                            min="10000" 
+                            max="100000000" 
+                            step="1000"
+                            placeholder="e.g., 50000"
+                            required
+                        >
+                        <span class="error-message" id="monthlyIncomeError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="riskProfile">Risk Profile</label>
+                        <select id="riskProfile" name="riskProfile" required>
+                            <option value="">Select risk profile</option>
+                            <option value="conservative">Conservative (Low Risk)</option>
+                            <option value="moderate">Moderate (Medium Risk)</option>
+                            <option value="aggressive">Aggressive (High Risk)</option>
+                        </select>
+                        <span class="error-message" id="riskProfileError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="investmentGoal">Investment Goal</label>
+                        <select id="investmentGoal" name="investmentGoal" required>
+                            <option value="">Select investment goal</option>
+                            <option value="retirement">Retirement Planning</option>
+                            <option value="wealth">Wealth Creation</option>
+                            <option value="education">Child's Education</option>
+                            <option value="house">Buying a Home</option>
+                            <option value="short-term">Short-term Goals</option>
+                        </select>
+                        <span class="error-message" id="investmentGoalError"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Get Plan Ideas</button>
+                </form>
+
+                <div id="planResults" class="plan-results hidden">
+                    <h3>Your Personalized Investment Ideas</h3>
+                    <div id="planContent"></div>
+                </div>
+            </section>
+
+            <!-- SEBI Disclaimer -->
+            <section class="disclaimer">
+                <h3>Important Disclaimer</h3>
+                <p><strong>SEBI Compliance Notice:</strong> This calculator and plan idea maker are for informational and educational purposes only. The calculations shown are based on assumed rates of return and mathematical formulas. Past performance is not indicative of future results.</p>
+                <p>This tool does NOT provide investment advice, recommendations, or guarantees of returns. No specific mutual funds, securities, or investment products are recommended. The investment ideas presented are general in nature and based on rule-based logic.</p>
+                <p>Before making any investment decisions, please consult with a qualified financial advisor and read all scheme-related documents carefully. Mutual fund investments are subject to market risks. Please read all scheme related documents carefully.</p>
+                <p><strong>Regulatory Compliance:</strong> Users should conduct their own due diligence and make informed investment decisions based on their individual financial situation, goals, and risk tolerance.</p>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 SIP Calculator. For educational purposes only.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
